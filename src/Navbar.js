@@ -3,17 +3,25 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Navbar.css';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 export default class Navbar extends Component {
   state = {
-    format: 'hex'
+    format: 'hex',
+    open: false
   }
 
   handleFormatChange = (e) => {
-    this.setState({format: e.target.value}, () => this.props.handleFormatChange(this.state.format));
+    console.log(e.target.value)
+    this.setState({format: e.target.value, open: true }, () => this.props.handleFormatChange(this.state.format));
     // this.props.handleFormatChange(e.target.value);
+  }
+
+  closeSnackBar = (e) => {
+    this.setState({open: false});
   }
 
   render() {
@@ -43,6 +51,28 @@ export default class Navbar extends Component {
             <MenuItem value='rgba'>RGBA - rgba(255, 255, 255, 1.0)</MenuItem>
           </Select>
         </div>
+        <Snackbar
+          anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+          }}
+          open={this.state.open}
+          onClose={this.closeSnackBar}
+          autoHideDuration={3000}
+          message={<span id='message-id'>Format changed to {format.toLocaleUpperCase()}</span>}
+          ContentProps={{
+            'aria-describedby': 'message-id'
+          }}
+          action={[
+            <IconButton size="small" 
+              key='close' 
+              aria-label="close" 
+              color="inherit" 
+              onClick={this.closeSnackBar}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          ]}
+        />
       </header>
     )
   }
