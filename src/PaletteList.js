@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Link } from'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@material-ui/core/styles';
-import { mergeClasses } from '@material-ui/styles';
-import { requirePropFactory } from '@material-ui/core';
+
 
 const styles = {
   root: {
-    backgroundColor: 'blue',
-    height: '100%',
+    backgroundColor: '#191970',
+    height: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start'
