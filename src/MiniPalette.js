@@ -44,7 +44,7 @@ const styles = {
 };
 
 function MiniPalette(props) {
-  console.log(props);
+  // console.log(props);
   const { classes, paletteName, emoji, colors } = props;
   const miniColorBoxes =  colors.map(color => (
     <div className={classes.miniColor} 
