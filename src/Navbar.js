@@ -26,25 +26,28 @@ export default class Navbar extends Component {
   }
 
   render() {
-    const { level, changeColorLevel } = this.props;
+    const { level, changeColorLevel, showAllColors } = this.props;
     const { format } = this.state;
     return (
       <header className='Navbar'>
         <div className='logo'>
           <Link to='/'>ReactColorPicker</Link>
         </div>
-        <div className='slider-container'>
-          <span>Level: {level}</span>
-          <div className='slider'>
-            <Slider 
-              defaultValue={level}
-              min={100}
-              max={900}
-              step={100}
-              onAfterChange={changeColorLevel}
-            />
-          </div>
-        </div>
+        {
+          showAllColors && 
+            <div className='slider-container'>
+              <span>Level: {level}</span>
+              <div className='slider'>
+                <Slider 
+                  defaultValue={level}
+                  min={100}
+                  max={900}
+                  step={100}
+                  onAfterChange={changeColorLevel}
+                />
+              </div>
+            </div>
+        }
         <div className='select-container'>
           <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value='hex'>HEX - #ffffff</MenuItem>
