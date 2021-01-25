@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PaletteFooter(props) {
-  console.log(props);
   const { paletteName, emoji } = props;
   return (
     <footer className='Palette-footer'>
