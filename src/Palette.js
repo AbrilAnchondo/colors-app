@@ -5,6 +5,16 @@ import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  Palette: {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  colors: {
+    height: '90%'
+  }
+}
 
 class Palette extends Component {
   state = {
