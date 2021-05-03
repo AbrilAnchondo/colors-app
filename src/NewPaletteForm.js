@@ -14,7 +14,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ChromePicker } from 'react-color';
 import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
-import { SettingsInputAntennaTwoTone } from '@material-ui/icons';
 
 const drawerWidth = 400;
 
@@ -76,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewPaletteForm() {
+export default function NewPaletteForm(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState('teal');
@@ -96,11 +95,6 @@ export default function NewPaletteForm() {
     setCurrentColor(newColor.hex);
   }
 
-  // const insertNewColor = () => {
-  //   console.log('current color', currentColor);
-  //   setColors([...colors, currentColor]);
-  // }
-
   const handleColorForm = (e) => {
     console.log('e', e.target.value);
     setNewColorName(e.target.value);
@@ -108,10 +102,19 @@ export default function NewPaletteForm() {
 
   const addNewColor = (e) => {
     e.preventDefault();
-    console.log('e submit',e);
     const newColor = {color: currentColor , name: newColorName};
-    console.log('newColor', newColor);
     setColors([...colors, newColor]);
+  }
+
+  const handleSubmit = () => {
+    const newName = 'Test Palette Name';
+    const newPalette = {
+      paletteName: 'test', 
+      colors: colors, 
+      id: newName.toLocaleLowerCase().replace(/ /g, '-')
+    }
+    props.saveNewPalette(newPalette);
+    props.history.push('/');
   }
 
   return (
@@ -119,6 +122,7 @@ export default function NewPaletteForm() {
       <CssBaseline />
       <AppBar
         position="fixed"
+        color='default'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -136,6 +140,9 @@ export default function NewPaletteForm() {
           <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
+          <Button variant='contained' color='primary' onClick={handleSubmit}>
+            Save Palette
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
