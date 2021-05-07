@@ -7,11 +7,10 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { ChromePicker } from 'react-color';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { arrayMove } from 'react-sortable-hoc';
 import DraggableColorList from './DraggableColorList';
 import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
 
 const drawerWidth = 400;
 
@@ -77,12 +76,13 @@ export default function NewPaletteForm(props) {
   console.log('props form', props);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [currentColor, setCurrentColor] = useState('teal');
   const [colors, setColors] = useState(props.palettes[0].colors);
-  const [newName, setNewName] = useState({
-    colorName: '',
-    paletteName: ''
-  })
+
+  // const [newName, setNewName] = useState({
+  //   colorName: '',
+  //   paletteName: ''
+  // })
+ 
 
   const maxNumOfColors = 20;
   const paletteIsFull = colors.length >= maxNumOfColors;
@@ -95,21 +95,8 @@ export default function NewPaletteForm(props) {
     setOpen(false);
   };
 
-  const updateButtonColor = (newColor) => {
-    console.log(newColor);
-    setCurrentColor(newColor.hex);
-  }
-
-  const handleNameChange = (e) => {
-    console.log('e', e.target.value);
-    setNewName({ ...newName, [e.target.name]: e.target.value});
-  }
-
-  const addNewColor = (e) => {
-    e.preventDefault();
-    const newColor = {color: currentColor , name: newName.colorName};
+  const addNewColor = (newColor) => {
     setColors([...colors, newColor]);
-    setNewName({ newColorName: ''});
   }
 
   const handleSubmit = (newPaletteName) => {
@@ -185,24 +172,10 @@ export default function NewPaletteForm(props) {
               Clear Palette
             </Button>
         </div>
-        <ChromePicker color={currentColor} onChangeComplete={updateButtonColor} />
-        <ValidatorForm onSubmit={addNewColor} >
-          <TextValidator value={newName.colorName} 
-          name='colorName'
-            onChange={handleNameChange}
-            validators={['required']}
-            errorMessages={['Enter a color name']}
-            />
-          <Button 
-            variant="contained" 
-            color={"primary"}
-            style={{backgroundColor: paletteIsFull ? "grey" : currentColor }}
-            type='submit'
-            disabled={paletteIsFull}
-            >
-              {paletteIsFull ? 'Palette Full' : 'Add Color'}
-          </Button>
-        </ValidatorForm>
+        <ColorPickerForm 
+          paletteIsFull={paletteIsFull}
+          addNewColor={addNewColor}
+          />
       </Drawer>
       <main
         className={clsx(classes.content, {
