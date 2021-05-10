@@ -36,22 +36,16 @@ const styles = theme => ({
     marginRight: theme.spacing(2),
   },
   navBtns: {
-    display: 'flex'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0.5rem'
   }
 });
 
 function PaletteFormNav(props) {
   console.log('props form nav', props);
   const { handleDrawerOpen, classes, open, handleSubmit, palettes } = props;
-  // const [newName, setNewName] = useState({
-  //   colorName: '',
-  //   paletteName: ''
-  // })
-
-  // const handleNameChange = (e) => {
-  //   console.log('e', e.target.value);
-  //   setNewName({ ...newName, [e.target.name]: e.target.value});
-  // }
 
   return (
     <div className={classes.root}>
@@ -78,13 +72,16 @@ function PaletteFormNav(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <PaletteMetaForm handleSubmit={handleSubmit}/>
+          <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit}/>
           <Link style={{textDecoration: "none"}} to='/'>
-            <Button variant='contained' style={{backgroundColor: "black", color: "white"}}>GO BACK</Button>
+            <Button 
+              variant='contained' 
+              style={{backgroundColor: "black", color: "white"}}>
+              GO BACK
+            </Button>
           </Link>
         </div>
-      </AppBar>
-      
+      </AppBar> 
     </div>
   )
 }
