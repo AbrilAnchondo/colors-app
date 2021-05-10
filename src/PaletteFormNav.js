@@ -7,9 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 const styles = theme => ({
@@ -43,15 +43,15 @@ const styles = theme => ({
 function PaletteFormNav(props) {
   console.log('props form nav', props);
   const { handleDrawerOpen, classes, open, handleSubmit, palettes } = props;
-  const [newName, setNewName] = useState({
-    colorName: '',
-    paletteName: ''
-  })
+  // const [newName, setNewName] = useState({
+  //   colorName: '',
+  //   paletteName: ''
+  // })
 
-  const handleNameChange = (e) => {
-    console.log('e', e.target.value);
-    setNewName({ ...newName, [e.target.name]: e.target.value});
-  }
+  // const handleNameChange = (e) => {
+  //   console.log('e', e.target.value);
+  //   setNewName({ ...newName, [e.target.name]: e.target.value});
+  // }
 
   return (
     <div className={classes.root}>
@@ -78,22 +78,11 @@ function PaletteFormNav(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-            <ValidatorForm onSubmit={() => handleSubmit(newName.paletteName)}>
-              <TextValidator value={newName.paletteName}
-                label='palette name'
-                name='paletteName'
-                onChange={handleNameChange}
-                validators={['required']}
-                errorMessages={['Enter a palette name']}
-              />
-              <Button variant='contained' color='primary' type='submit'>
-                Save Palette
-              </Button>
-            </ValidatorForm>
-            <Link style={{textDecoration: "none"}} to='/'>
-              <Button variant='contained' style={{backgroundColor: "black", color: "white"}}>GO BACK</Button>
-            </Link>
-          </div>
+          <PaletteMetaForm handleSubmit={handleSubmit}/>
+          <Link style={{textDecoration: "none"}} to='/'>
+            <Button variant='contained' style={{backgroundColor: "black", color: "white"}}>GO BACK</Button>
+          </Link>
+        </div>
       </AppBar>
       
     </div>
