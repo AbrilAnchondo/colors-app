@@ -11,29 +11,13 @@ import { arrayMove } from 'react-sortable-hoc';
 import DraggableColorList from './DraggableColorList';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
+import { withStyles } from '@material-ui/styles';
 
 const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
@@ -72,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewPaletteForm(props) {
+function NewPaletteForm(props) {
   console.log('props form', props);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -194,4 +178,4 @@ export default function NewPaletteForm(props) {
     </div>
   );
 }
-
+export default withStyles(useStyles, { withTheme: true })(NewPaletteForm);
