@@ -3,22 +3,7 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/styles';
-
-const styles = {  
-  picker: {
-    width: "100% !important",
-    marginTop: "2rem"
-  },
-  addColorBtn: {
-    width: "100%",
-    padding: "1rem",
-    marginTop: "1rem"
-  },
-  colorNameInput: {
-    width: "100%",
-    marginTop: "1rem",
-  }
-}
+import styles from './styles/ColorPickerFormStyles';
 
 function ColorPickerForm(props) {
   const { paletteIsFull, classes } = props;
@@ -27,12 +12,10 @@ function ColorPickerForm(props) {
   const [newColorName, setNewColorName] = useState('');
 
   const updateButtonColor = (newColor) => {
-    console.log(newColor);
     setCurrentColor(newColor.hex);
   }
 
   const handleNameChange = (e) => {
-    console.log('e', e.target.value);
     setNewColorName(e.target.value);
   }
 

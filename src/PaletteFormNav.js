@@ -10,38 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PaletteMetaForm from './PaletteMetaForm';
-
-const drawerWidth = 400;
-const styles = theme => ({
-  root: {
-    display: 'flex'
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  navBtns: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0.5rem'
-  }
-});
+import styles from './styles/PaletteFormNavStyles';
 
 function PaletteFormNav(props) {
   const { handleDrawerOpen, classes, open, handleSubmit, palettes } = props;
