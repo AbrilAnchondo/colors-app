@@ -76,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NewPaletteForm(props) {
-  console.log('props form', props);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState(props.palettes[0].colors);
@@ -102,15 +101,9 @@ function NewPaletteForm(props) {
     setColors([...colors, newColor]);
   }
 
-  const handleSubmit = (newPaletteName) => {
-    console.log('saving...')
-    const newPalette = {
-      //paletteName: newName.paletteName, 
-      paletteName: newPaletteName,
-      colors: colors, 
-      id: newPaletteName.toLowerCase().replace(/ /g, '-')
-    }
-    console.log('newPalette', newPalette);
+  const handleSubmit = (newPalette) => {
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
+    newPalette.colors = colors;
     props.saveNewPalette(newPalette);
     props.history.push('/');
   }

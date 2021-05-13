@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -44,7 +44,6 @@ const styles = theme => ({
 });
 
 function PaletteFormNav(props) {
-  console.log('props form nav', props);
   const { handleDrawerOpen, classes, open, handleSubmit, palettes } = props;
 
   return (

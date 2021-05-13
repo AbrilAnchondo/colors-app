@@ -21,7 +21,6 @@ const styles = {
 }
 
 function ColorPickerForm(props) {
-  console.log('colorPickerFormProps',props);
   const { paletteIsFull, classes } = props;
 
   const [currentColor, setCurrentColor] = useState('teal');
