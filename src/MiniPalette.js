@@ -14,13 +14,11 @@ function MiniPalette(props) {
   ))
   return (
     <div className={classes.root} onClick={props.handleClick}>
-      <div className={classes.delete}>
-        <DeleteIcon 
-          className={classes.deleteIcon}
-          style={{transition: "all 0.4s ease-in-out"}}
-          >
-        </DeleteIcon>
-      </div>
+      <DeleteIcon 
+        className={classes.deleteIcon}
+        style={{transition: "all 0.4s ease-in-out"}}
+        >
+      </DeleteIcon>
       <div className={classes.colors}>
         {miniColorBoxes}
       </div>
