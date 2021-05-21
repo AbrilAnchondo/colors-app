@@ -30,8 +30,6 @@ class App extends Component {
     this.setState({
       palettes: [...this.state.palettes].filter(palette => palette.id !== id)
     }, this.syncLocalStorage)
-  
-    console.log('state after deleting', this.state.palettes);
   }
 
   syncLocalStorage = () => {

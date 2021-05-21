@@ -2,6 +2,15 @@ import sizes from './MediaQueries.js';
 import  bg from './bg.svg';
 
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: 1
+    },
+    '.fade-exit-active': {
+      opacity: 0,
+      transition: 'opacity 500ms ease-out'
+    }
+  },
   root: {
     backgroundImage: 'linear-gradient(to bottom right, purple, blue)',
     minHeight: '100vh',
@@ -33,7 +42,7 @@ export default {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    color: 'white',
+    color: 'black',
     "& a": {
       color: 'black',
       textDecoration: 'none',
