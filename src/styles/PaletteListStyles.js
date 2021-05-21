@@ -1,6 +1,6 @@
 export default {
   root: {
-    backgroundColor: '#191970',
+    backgroundImage: 'linear-gradient(to bottom right, purple, blue)',
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
