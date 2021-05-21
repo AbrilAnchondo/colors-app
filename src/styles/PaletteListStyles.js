@@ -1,17 +1,28 @@
+import sizes from './MediaQueries.js';
+
 export default {
   root: {
     backgroundImage: 'linear-gradient(to bottom right, purple, blue)',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start'
   },
   container: {
-    width: '50%',
+    width: '60%',
     display: 'flex',
     alignItems: 'felx-start',
     flexDirection: 'column',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    [sizes.down("lg")]: {
+      width: "75%",
+    },
+    [sizes.down("md")]: {
+      width: "80%",
+    },
+    [sizes.down("xs")]: {
+      width: "60%",
+    },
   },
   nav: {
     display: 'flex',
@@ -33,6 +44,12 @@ export default {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 30%)',
-    gridGap: '5%'
+    gridGap: '2rem',
+    [sizes.down("sm")]: {
+      gridTemplateColumns: 'repeat(2, 50%)'
+    },
+    [sizes.down("xs")]: {
+      gridTemplateColumns: 'repeat(1, 100%)'
+    },
   }
 }
