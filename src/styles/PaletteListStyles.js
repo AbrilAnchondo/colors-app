@@ -1,4 +1,5 @@
 import sizes from './MediaQueries.js';
+import  bg from './bg.svg';
 
 export default {
   root: {
@@ -6,7 +7,10 @@ export default {
     minHeight: '100vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    /* background by SVGBackgrounds.com */
+    backgroundColor: '#e8dbff',
+    backgroundImage: `url(${bg})`      
   },
   container: {
     width: '60%',

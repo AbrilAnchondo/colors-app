@@ -41,7 +41,7 @@ export default {
   },
   deleteIcon: {
     color: 'white',
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
     position: 'absolute',
     top: '0px',
     right: '0px',
