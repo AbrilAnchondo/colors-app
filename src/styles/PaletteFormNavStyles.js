@@ -1,4 +1,5 @@
 import { DRAWER_WITH } from '../constants.js';
+//import sizes from './MediaQueries.js';
 
 const styles = theme => ({
   root: {
@@ -30,7 +31,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0.5rem'
+    padding: '0.5rem',
   }
 });
 export default styles;

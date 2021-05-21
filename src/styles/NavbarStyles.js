@@ -1,9 +1,11 @@
+import sizes from './MediaQueries.js';
+
 export default {
   Navbar: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: '6vh'
+    height: '6vh',
   },
   
   logo: {
@@ -18,6 +20,9 @@ export default {
     '& a': {
       textDecoration: 'none',
       color: 'black'
+    },
+    [sizes.down("xs")]: {
+      display: 'none',
     }
   },
   
@@ -40,6 +45,9 @@ export default {
       height: '13px',
       marginLeft: '-6px',
       marginTop: '-2px',
+    },
+    [sizes.down("md")]: {
+      width: '150px',
     }
   },
   selectContainer: {
